@@ -19,9 +19,7 @@ class DashboardContainer extends React.Component {
     this.close = this.close.bind(this);
   }
   componentDidMount(){
-    this.props.photoFetch()
-      .then(() => console.log(this.props, '***Props after didMountFetch'));
-    // this.props.profileFetch();
+    this.props.photoFetch();
   }
 
   
