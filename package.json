@@ -1,6 +1,9 @@
 {
   "name": "36-d18",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.1.2"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
