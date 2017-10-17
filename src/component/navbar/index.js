@@ -5,10 +5,21 @@ import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
 import {tokenDelete} from '../../action/auth-actions';
 import { AccessAlarm, ThreeDRotation } from 'material-ui-icons';
+import {stringify} from 'querystring';
 
 
 class Navbar extends React.Component {
   render() {
+    let googleLoginBaseUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+    let googleLoginQuery = stringify({
+      client_id: __GOOGLE_CLIENT_ID__,
+      response_type: 'code',
+      redirect_uri: `${__API_URL__}/oauth/google/code`,
+      scope: 'openid profile email',
+      prompt: __DEBUG__ ? 'consent' : undefined,
+    });
+
+    let googleLoginUrl = `${googleLoginBaseUrl}?${googleLoginQuery}`;
     return (
       <header>
         {this.props.auth && this.props.profile ? 
@@ -30,6 +41,7 @@ class Navbar extends React.Component {
               :
               <div> 
                 <li><Link to="/welcome/signup">Signup</Link></li>
+                <li><a href={googleLoginBaseUrl}>OAuth</a></li>
                 <li><Link to="/welcome/login">Login</Link></li>
               </div>
             }

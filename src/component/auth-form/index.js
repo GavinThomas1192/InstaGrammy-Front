@@ -44,17 +44,6 @@ class AuthForm extends React.Component {
   }
 
   render() {
-    let authUrl= 'https://accounts.google.com/o/oauth2/v2/auth';
-    let fullUrl = `${authURL}?${googleLoginQuery}`;
-    
-    let googleLoginQuery = stringify({
-
-      clientId: __GOOGLE_CLIENT_ID__,
-      repsonseType: 'code',
-      scope: 'openid profile email',
-      prompt: __DEBUG__ ? 'consent' : undefined,
-      redirectUri: `${API_URL}/oauth/google/code`,
-    });
 
     return (
       <form
@@ -95,7 +84,7 @@ class AuthForm extends React.Component {
           placeholder="password"
           value={this.state.password}
           onChange={this.handleChange}/><br/>
-        <a href={fullUrl}><Button bsStyle="primary" type='submit'>{this.props.auth}</Button></a>
+        <Button bsStyle="primary" type='submit'>{this.props.auth}</Button>
       </form>
     );
   }
