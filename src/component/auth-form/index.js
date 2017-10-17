@@ -1,6 +1,7 @@
 import React from 'react';
 import * as utils from '../../lib/utils';
 import {Button} from 'react-bootstrap';
+import {stringify} from 'querystring';
 
 class AuthForm extends React.Component {
   constructor(props) {
@@ -43,6 +44,18 @@ class AuthForm extends React.Component {
   }
 
   render() {
+    let authUrl= 'https://accounts.google.com/o/oauth2/v2/auth';
+    let fullUrl = `${authURL}?${googleLoginQuery}`;
+    
+    let googleLoginQuery = stringify({
+
+      clientId: __GOOGLE_CLIENT_ID__,
+      repsonseType: 'code',
+      scope: 'openid profile email',
+      prompt: __DEBUG__ ? 'consent' : undefined,
+      redirectUri: `${API_URL}/oauth/google/code`,
+    });
+
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -82,7 +95,7 @@ class AuthForm extends React.Component {
           placeholder="password"
           value={this.state.password}
           onChange={this.handleChange}/><br/>
-        <Button bsStyle="primary" type='submit'>{this.props.auth}</Button>
+        <a href={fullUrl}><Button bsStyle="primary" type='submit'>{this.props.auth}</Button></a>
       </form>
     );
   }

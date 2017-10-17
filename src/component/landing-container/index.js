@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import {Button, Modal} from 'react-bootstrap';
 import {signupRequest, loginRequest} from '../../action/auth-actions';
+import {stringify} from 'querystring';
 
 class LandingContainer extends React.Component {
   constructor(props){
@@ -17,6 +18,8 @@ class LandingContainer extends React.Component {
     this.setState({ showModal: !this.state.showModal });
   }
   render() {
+
+
     let {params} = this.props.match;
     let handleComplete = params.auth === 'login' ?
       this.props.login  : 
