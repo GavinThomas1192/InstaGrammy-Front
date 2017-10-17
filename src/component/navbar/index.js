@@ -14,7 +14,7 @@ class Navbar extends React.Component {
     let googleLoginQuery = stringify({
       client_id: __GOOGLE_CLIENT_ID__,
       response_type: 'code',
-      redirect_uri: `${__API_URL__}/oauth/google/code`,
+      redirect_uri: `https://instygrammy.herokuapp.com`,
       scope: 'openid profile email',
       prompt: __DEBUG__ ? 'consent' : undefined,
     });
