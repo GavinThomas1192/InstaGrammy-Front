@@ -20,6 +20,7 @@ class Navbar extends React.Component {
     });
 
     let googleLoginUrl = `${googleLoginBaseUrl}?${googleLoginQuery}`;
+    console.log(googleLoginUrl);
     return (
       <header>
         {this.props.auth && this.props.profile ? 
