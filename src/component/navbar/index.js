@@ -42,7 +42,7 @@ class Navbar extends React.Component {
               :
               <div> 
                 <li><Link to="/welcome/signup">Signup</Link></li>
-                <li><a href={googleLoginBaseUrl}>OAuth</a></li>
+                <li><a href={googleLoginUrl}>OAuth</a></li>
                 <li><Link to="/welcome/login">Login</Link></li>
               </div>
             }
