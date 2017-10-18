@@ -7,6 +7,7 @@ import PhotoForm from '../photo-form';
 import PhotoItem from '../photo-item';
 import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions.js';
 import {profileFetchRequest} from '../../action/profile-actions.js';
+import {tokenSet} from '../../action/auth-actions';
 
 class DashboardContainer extends React.Component {
   constructor(props){
@@ -20,11 +21,13 @@ class DashboardContainer extends React.Component {
   }
   componentDidMount(){
     this.props.photoFetch();
+    let token = utils.cookieFetch('X-Sluggram-Token');
+    if(token) this.props.tokenSet(token);
   }
 
   
   componentWillMount() {
-    this.props.auth ? undefined : this.props.history.replace('/');
+    this.props.auth ? undefined : this.props.history.replace('/home');
   }
 
   toggleFormStart(){
@@ -93,6 +96,7 @@ let mapDispatchToProps = dispatch => ({
   photoCreate: (photo) => dispatch(photoCreateRequest(photo)),
   photoFetch: () => dispatch(photosFetchRequest()),
   profileFetch: () => dispatch(profileFetchRequest()),
+  tokenSet: token => dispatch(tokenSet(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);

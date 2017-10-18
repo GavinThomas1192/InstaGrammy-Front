@@ -29,7 +29,7 @@ class App extends React.Component {
             )} 
             <Route path="/welcome/:auth" component={LandingContainer}/>
             <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/" />}/>
-            <Route exact path="/" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/" />}/>
+            <Route exact path="/home" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/home" />}/>
           </div>
         </BrowserRouter>
       </div>

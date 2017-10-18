@@ -1,5 +1,7 @@
 import React from 'react';
 import './_navbar.scss';
+import * as utils from '../../lib/utils';
+import {tokenSet} from '../../action/auth-actions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
@@ -9,6 +11,10 @@ import {stringify} from 'querystring';
 
 
 class Navbar extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
   render() {
     let googleLoginBaseUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
     let googleLoginQuery = stringify({
@@ -20,7 +26,7 @@ class Navbar extends React.Component {
     });
 
     let googleLoginUrl = `${googleLoginBaseUrl}?${googleLoginQuery}`;
-    console.log(googleLoginUrl);
+    console.log(googleLoginUrl, '$$$$$$$');
     return (
       <header>
         {this.props.auth && this.props.profile ? 
@@ -36,7 +42,7 @@ class Navbar extends React.Component {
             {this.props.auth ?
               <div>
                 <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li> 
-                <li><Link to="/">Dashboard</Link></li> 
+                <li><Link to="/home">Dashboard</Link></li> 
                 <li><Link to="/settings">Settings</Link></li> 
               </div>
               :
@@ -60,6 +66,7 @@ let mapStateToProps = state => ({
 
 let mapDispatchToProps = dispatch => ({
   tokenDelete: () => dispatch(tokenDelete()),
+  tokenSet: token => dispatch(tokenSet(token)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
