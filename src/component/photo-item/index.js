@@ -40,16 +40,16 @@ class PhotoItem extends React.Component {
     return (
    
       <div>
-        {utils.renderIf(!this.state.edit ,
+        {/* {utils.renderIf(!this.state.edit , */}
 
-          <div>
-            <Image className='uploadedImages' src={this.props.photo.url} responsive />
-            <p> {this.props.photo.description} </p>
-            <Button bsStyle="danger" onClick={this.handleDelete}>X</Button>
-            <Button bsStyle="primary" onClick={() =>this.setState({showModal: !this.state.showModal, edit: !this.state.edit})}>Edit</Button>
-          </div>
+        <div>
+          <Image className='uploadedImages' src={this.props.photo.url} responsive />
+          <p> {this.props.photo.description} </p>
+          <Button bsStyle="danger" onClick={this.handleDelete}>X</Button>
+          <Button bsStyle="primary" onClick={() =>this.setState({showModal: !this.state.showModal, edit: !this.state.edit})}>Edit</Button>
+        </div>
 
-        )}
+        {/* )} */}
 
         {utils.renderIf(this.state.edit,
           <div className="static-modal">
