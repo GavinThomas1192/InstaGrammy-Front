@@ -13,7 +13,7 @@ import Hero from '../hero-container';
 class App extends React.Component {
 
 
-  componentWillMount() {
+  componentDidMount() {
     let token = utils.cookieFetch('X-Sluggram-Token');
     if(token) this.props.tokenSet(token);
   }
