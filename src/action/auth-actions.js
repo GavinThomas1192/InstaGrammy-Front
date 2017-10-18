@@ -32,3 +32,13 @@ export const loginRequest = user => dispatch => {
       return res;
     });
 };
+
+export const OAuthRequest = user => dispatch => {
+  return superagent.get(`${__API_URL__}/oauth/google/code`)
+    // .withCredentials()
+    // .auth(user.username, user.password)
+    .then(res => {
+      dispatch(tokenSet(res.text));
+      return res;
+    });
+};

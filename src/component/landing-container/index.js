@@ -16,6 +16,7 @@ class LandingContainer extends React.Component {
   }
   close() {
     this.setState({ showModal: !this.state.showModal });
+    this.props.history.replace('/home');
   }
   render() {
 
