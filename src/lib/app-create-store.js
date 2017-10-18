@@ -7,7 +7,7 @@ import {persistStore, autoRehydrate} from 'redux-persist';
 let appStoreCreate = () => 
   createStore(reducer, compose(applyMiddleware(thunk, reporter), autoRehydrate()));
 
-persistStore(appStoreCreate);
+
 export default appStoreCreate;
 
 
