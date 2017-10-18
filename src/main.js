@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import App from './component/app';
 import {Provider} from 'react-redux';
 import appCreateStore from './lib/app-create-store';
-import * as utils from '../../lib/utils';
+import * as utils from './lib/utils';
 
 let store = appCreateStore();
 
