@@ -21,12 +21,12 @@ class DashboardContainer extends React.Component {
   }
   componentDidMount(){
     this.props.photoFetch();
-    let token = utils.cookieFetch('X-Sluggram-Token');
-    if(token) this.props.tokenSet(token);
   }
-
+  
   
   componentWillMount() {
+    let token = utils.cookieFetch('X-Sluggram-Token');
+    if(token) this.props.tokenSet(token);
     this.props.auth ? undefined : this.props.history.replace('/home');
   }
 
