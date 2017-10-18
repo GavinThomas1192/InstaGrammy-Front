@@ -31,6 +31,15 @@ export const photosFetchRequest = () => (dispatch, getState) => {
     });
 };
 
+export const photosFetchAllRequest = () => (dispatch, getState) => {
+  let {auth} = getState();
+  return superagent.get(`${__API_URL__}/photos`)
+    .then(res => {
+      dispatch(photoSet(res.body.data));
+      return res;
+    });
+};
+
 export const photoCreateRequest = (photo) => (dispatch, getState) => {
   let {auth} = getState();
   return superagent.post(`${__API_URL__}/photos`)
