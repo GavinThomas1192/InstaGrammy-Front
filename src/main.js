@@ -4,8 +4,11 @@ import App from './component/app';
 import {Provider} from 'react-redux';
 import appCreateStore from './lib/app-create-store';
 import * as utils from './lib/utils';
+import {persistStore, autoRehydrate} from 'redux-persist';
+
 
 let store = appCreateStore();
+persistStore(store);
 
 class AppContainer extends React.Component {
   componentDidMount() {
