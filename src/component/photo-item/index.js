@@ -5,6 +5,7 @@ import * as utils from '../../lib/utils.js';
 import {Button, Grid, Col, Row, Image, Modal} from 'react-bootstrap';
 import PhotoForm from '../photo-form';
 import {photoDeleteRequest, photoUpdateRequest} from '../../action/photo-actions.js';
+// import AWS from 'aws-sdk';
 
 class PhotoItem extends React.Component {
   constructor(props){
@@ -17,9 +18,21 @@ class PhotoItem extends React.Component {
     this.handleUpdate = this.handleUpdate.bind(this);
     this.close = this.close.bind(this);
   }
-
+  
   handleDelete() {
+    // AWS.config.update({
+    //   accessKeyId: `${__AWS_ACCESS_KEY_ID__}`,
+    //   secretAccessKey: `${__AWS_SECRET_ACCESS_KEY__}`,
+    //   'region': 'us-west-2',
+    // });
+    // let s3 = new AWS.S3();
+    // let params = {  Bucket: 'instygrammy', Key: `${this.props.photo.url}` };
+    // s3.deleteObject(params, function(err, data) {
+    //   if (err) console.log(err, err.stack);
+    //   else     console.log(data);  
+    // });
     return this.props.deletePhoto(this.props.photo)
+      .then(console.log(this.props.photo, '*******photo'))
       .catch(console.error);
   }
 

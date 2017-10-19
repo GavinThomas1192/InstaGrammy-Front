@@ -20,14 +20,13 @@ class DashboardContainer extends React.Component {
     this.close = this.close.bind(this);
   }
   componentDidMount(){
+    localStorage.clear();
     this.props.photoFetch();
   }
   
   
   componentWillMount() {
-    let token = utils.cookieFetch('X-Sluggram-Token');
-    if(token) this.props.tokenSet(token);
-    this.props.auth ? undefined : this.props.history.replace('/home');
+    this.props.auth ? undefined : this.props.history.replace('/');
   }
 
   toggleFormStart(){

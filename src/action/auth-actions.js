@@ -30,7 +30,8 @@ export const loginRequest = user => dispatch => {
     .then(res => {
       dispatch(tokenSet(res.text));
       return res;
-    });
+    })
+    .then(localStorage.clear());
 };
 
 export const OAuthRequest = user => dispatch => {
