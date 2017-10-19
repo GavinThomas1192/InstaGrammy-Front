@@ -43,6 +43,7 @@ export const profileUpdateRequest = (profile) => (dispatch, getState) => {
   return superagent.put(`${__API_URL__}/profiles/${profile._id}`)
     .set('Authorization', `Bearer ${auth}`)
     .field('bio', profile.bio)
+    .field('username', profile.username)
     .attach('avatar', profile.avatar)
     .then(res => {
       dispatch(profileUpdate(res.body));

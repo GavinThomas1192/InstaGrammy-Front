@@ -7,7 +7,8 @@ class ProfileForm extends React.Component {
     super(props);
     this.state = props.profile ?
       {...props.profile, preview: ''} :
-      {bio: '', preview: '', avatar: null};
+      {username: '', bio: '', preview: '', avatar: null};
+    console.log(this.props.profile);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,6 +17,7 @@ class ProfileForm extends React.Component {
   handleChange(e) {
     let {type, name} = e.target;
     if(name === 'bio') this.setState({bio: e.target.value});
+    if(name === 'username') this.setState({username: e.target.value});
     if(name === 'avatar') {
       let {files} = e.target; 
       let avatar = files[0];
@@ -44,6 +46,11 @@ class ProfileForm extends React.Component {
             type="file"
             name="avatar"
             onChange={this.handleChange}/><br/>
+
+          <input
+            type="text"
+            name="username"
+            onChange={this.handleChange}/><br/> 
 
           <textarea 
             name="bio" 

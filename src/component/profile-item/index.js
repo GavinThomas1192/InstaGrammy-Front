@@ -3,7 +3,7 @@ import {Jumbotron, Button, Modal} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import * as utils from '../../lib/utils';
 import ProfileForm from '../profile-form';
-import {profileFetchRequest, profileCreateRequest, profileUpdateRequest} from '../../action/profile-actions';
+import {profileCreateRequest, profileUpdateRequest} from '../../action/profile-actions';
 
 
 class ProfileItem extends React.Component {

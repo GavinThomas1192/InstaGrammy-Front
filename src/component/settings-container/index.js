@@ -19,11 +19,10 @@ class SettingsContainer extends React.Component {
   }
 
 
-  componentWillMount() {
-    if(!this.props.profile) this.props.profileFetch()
-      .then(() => console.log('********componentWillMount******', this.props));
-
-  }
+  // componentWillMount() {
+  //   if(!this.props.profile) this.props.profileFetch()
+  //     .then(() => console.log('********componentWillMount******', this.props));
+  // }
 
   
   handleToggle(){
@@ -57,7 +56,7 @@ let mapStateToProps = state => ({
 
 let mapDispatchToProps = dispatch => ({
   profileCreate: profile => dispatch(profileCreateRequest(profile)),
-  profileFetch: () => dispatch(profileFetchRequest()),
+  // profileFetch: () => dispatch(profileFetchRequest()),
   profileUpdate: profile => dispatch(profileUpdateRequest(profile)),
 });
 

@@ -6,7 +6,7 @@ import * as utils from '../../lib/utils';
 import PhotoForm from '../photo-form';
 import PhotoItem from '../photo-item';
 import {photosFetchRequest, photoCreateRequest} from '../../action/photo-actions.js';
-import {profileFetchRequest} from '../../action/profile-actions.js';
+// import {profileFetchRequest} from '../../action/profile-actions.js';
 import {tokenSet} from '../../action/auth-actions';
 
 class DashboardContainer extends React.Component {
@@ -95,7 +95,7 @@ let mapStateToProps = state => ({
 let mapDispatchToProps = dispatch => ({
   photoCreate: (photo) => dispatch(photoCreateRequest(photo)),
   photoFetch: () => dispatch(photosFetchRequest()),
-  profileFetch: () => dispatch(profileFetchRequest()),
+  // profileFetch: () => dispatch(profileFetchRequest()),
   tokenSet: token => dispatch(tokenSet(token)),
 });
 

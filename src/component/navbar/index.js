@@ -2,6 +2,7 @@ import React from 'react';
 import './_navbar.scss';
 import * as utils from '../../lib/utils';
 import {tokenSet} from '../../action/auth-actions';
+// import {profileFetchRequest} from '../../action/profile-actions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
@@ -14,6 +15,11 @@ class Navbar extends React.Component {
   constructor(props){
     super(props);
   }
+
+  // componentWillMount() {
+  //   if(!this.props.profile) this.props.profileFetch()
+  //     .then(() => console.log('********componentWillMount******', this.props));
+  // }
 
   render() {
     let googleLoginBaseUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -68,6 +74,7 @@ let mapStateToProps = state => ({
 let mapDispatchToProps = dispatch => ({
   tokenDelete: () => dispatch(tokenDelete()),
   tokenSet: token => dispatch(tokenSet(token)),
+  // profileFetch: () => dispatch(profileFetchRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

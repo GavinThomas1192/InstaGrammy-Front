@@ -20,6 +20,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props.auth, '***auth', this.props.profile, '***profile');
     return (
       <div className="application">
         <BrowserRouter>
@@ -28,6 +29,7 @@ class App extends React.Component {
             {utils.renderIf(!this.props.auth,
               <Hero />
             )} 
+            
             <Route path="/welcome/:auth" component={LandingContainer}/>
             <Route exact path="/settings" component={() => this.props.auth ? <SettingsContainer/> : <Redirect to="/home" />}/>
             <Route exact path="/home" component={() => this.props.auth ? <DashboardContainer/> : <Redirect to="/home" />}/>

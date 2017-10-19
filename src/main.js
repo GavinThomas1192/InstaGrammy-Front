@@ -8,13 +8,10 @@ import {persistStore, autoRehydrate} from 'redux-persist';
 
 
 let store = appCreateStore();
-persistStore(store);
+// persistStore(store);
 
 class AppContainer extends React.Component {
-  componentDidMount() {
-    let token = utils.cookieFetch('X-Sluggram-Token');
-    if(token) this.props.tokenSet(token);
-  }
+
   render() {
     return (
       <Provider store={store}>
