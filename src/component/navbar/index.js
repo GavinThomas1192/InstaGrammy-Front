@@ -13,6 +13,14 @@ import {stringify} from 'querystring';
 class Navbar extends React.Component {
   constructor(props){
     super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(){
+    localStorage.clear();
+    utils.cookieDelete('X-Sluggram-Token');
+    this.props.tokenDelete();
+
   }
 
   render() {
@@ -41,7 +49,7 @@ class Navbar extends React.Component {
           <ul>
             {this.props.auth ?
               <div>
-                <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li> 
+                <li onClick={this.handleLogout}><Link to="/home">Logout</Link></li> 
                 <li><Link to="/home">Dashboard</Link></li> 
                 <li><Link to="/settings">Settings</Link></li> 
                 <li><Link to="/gallery">Public Gallery</Link></li> 
