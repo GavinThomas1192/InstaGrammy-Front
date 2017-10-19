@@ -2,7 +2,7 @@ import React from 'react';
 import './_navbar.scss';
 import * as utils from '../../lib/utils';
 import {tokenSet} from '../../action/auth-actions';
-// import {profileFetchRequest} from '../../action/profile-actions';
+import {profileFetchRequest} from '../../action/profile-actions';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
@@ -14,6 +14,15 @@ import {stringify} from 'querystring';
 class Navbar extends React.Component {
   constructor(props){
     super(props);
+
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+
+  handleLogout(){
+    utils.cookieDelete('X-Sluggram-Token');
+    utils.clearLocalStorageToken();
+
   }
 
   // componentWillMount() {
@@ -47,7 +56,7 @@ class Navbar extends React.Component {
           <ul>
             {this.props.auth ?
               <div>
-                <li onClick={this.props.tokenDelete}><Link to="/">Logout</Link></li> 
+                <li onClick={this.handleLogout}><Link to="/home">Logout</Link></li> 
                 <li><Link to="/home">Dashboard</Link></li> 
                 <li><Link to="/settings">Settings</Link></li> 
                 <li><Link to="/gallery">Public Gallery</Link></li> 
